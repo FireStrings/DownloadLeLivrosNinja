@@ -67,12 +67,9 @@ public class Downloader implements Runnable {
                 
             } catch (Exception e) {
 
-                e.printStackTrace();
-                
+                e.printStackTrace();                
             }
-
         }
-
     }
 
     public String getUrlSource(String url) throws IOException {
