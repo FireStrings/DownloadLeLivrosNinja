@@ -18,10 +18,10 @@ public class Main {
      */
     public static void main(String[] args) {
      
-        Principal p = new Principal();
-        
-        p.setVisible(true);
-        p.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);        
+        Principal principal = new Principal();  
+            
+        principal.setVisible(true);
+        principal.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);    
     }
     
    
