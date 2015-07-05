@@ -214,10 +214,6 @@ public class Principal extends javax.swing.JFrame {
         this.jTextField1.setEnabled(false);
     }
 
-    public static void notificarConclusao(){
-        
-       // jLabel4.setVisible(false);
-    } 
     /**
      * @param args the command line arguments
      */
