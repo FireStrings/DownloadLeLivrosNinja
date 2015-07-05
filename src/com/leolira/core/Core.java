@@ -23,6 +23,4 @@ public class Core {
         principal.setVisible(true);
         principal.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);    
     }
-    
-   
 }
