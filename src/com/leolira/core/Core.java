@@ -4,21 +4,21 @@
  */
 package com.leolira.core;
 
-import com.leolira.ui.Principal;
+import com.leolira.ui.FrameInicial;
 import javax.swing.JFrame;
 
 /**
  *
  * @author Leo Lira
  */
-public class Main {
+public class Core {
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
      
-        Principal principal = new Principal();  
+        FrameInicial principal = new FrameInicial();  
             
         principal.setVisible(true);
         principal.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);    

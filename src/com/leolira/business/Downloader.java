@@ -4,7 +4,7 @@
  */
 package com.leolira.business;
 
-import com.leolira.ui.Principal;
+import com.leolira.ui.FrameInicial;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
@@ -145,6 +145,6 @@ public class Downloader implements Runnable {
         this.saveBook(urlRaiz);
         
         JOptionPane.showMessageDialog(null, "Download concluído!");
-        Principal.getWindows()[0].dispose();
+        FrameInicial.getWindows()[0].dispose();
     }
 }
