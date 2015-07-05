@@ -62,7 +62,7 @@ public class Downloader implements Runnable {
                 URL url = new URL(file);
 
                 FileUtils.copyURLToFile(url, new File("C:\\Livros\\" + name));
-                System.out.println("Ultimo livro: " + name);   
+                System.out.println("Livro salvo no HD: " + name);   
                 error = false;
                 
             } catch (Exception e) {
