@@ -2,13 +2,13 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package downloader;
+package com.leolira.business;
 
+import com.leolira.ui.Principal;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.net.SocketTimeoutException;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.ArrayList;
@@ -52,14 +52,26 @@ public class Downloader implements Runnable {
         this.badLinks.add("teste/");
         this.badLinks.add("/");
 
-
     }
 
     public void writeFile(String file, String name) throws IOException {
+        boolean error = true;
 
-        URL url = new URL(file);
-        FileUtils.copyURLToFile(url, new File("C:\\Livros\\" + name));
-        System.out.println("Ultimo livro: " + name);
+        while (error) {
+            try {
+                URL url = new URL(file);
+
+                FileUtils.copyURLToFile(url, new File("C:\\Livros\\" + name));
+                System.out.println("Ultimo livro: " + name);   
+                error = false;
+                
+            } catch (Exception e) {
+
+                e.printStackTrace();
+                
+            }
+
+        }
 
     }
 
@@ -86,14 +98,20 @@ public class Downloader implements Runnable {
     public void saveBook(String text) {
 
         Document doc = null;
+        boolean error = true;
         try {
-            
-            while(doc == null){
-                
-                doc = Jsoup.connect(text).get();
-            
-            }
 
+            while (error) {
+                try {
+                    doc = Jsoup.connect(text).get();
+                    error = false;
+                } catch (Exception e) {
+
+                    e.printStackTrace();
+                    
+                }
+
+            }
             for (Element file : doc.select("a")) {
                 String linkAtual = file.attr("href");
 
@@ -128,7 +146,8 @@ public class Downloader implements Runnable {
     @Override
     public void run() {
         this.saveBook(urlRaiz);
-
+        
         JOptionPane.showMessageDialog(null, "Download concluído!");
+        Principal.getWindows()[0].dispose();
     }
 }
