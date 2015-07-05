@@ -21,14 +21,15 @@ public class Principal extends javax.swing.JFrame {
      */
     public Principal() {
         initComponents();
-        
+
         setExtendedState(JFrame.MAXIMIZED_HORIZ);
         setResizable(false);
-        
+        setLocation(450, 250);
+
         this.downloader = new Downloader();
         this.jLabel3.setText(downloader.getUrlRaiz());
         this.jLabel4.setVisible(false);
-        
+
     }
 
     //  Leo l = new Leo();
@@ -86,7 +87,7 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
-        jButton3.setText("Stop");
+        jButton3.setText("Stop / Exit");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
@@ -105,7 +106,7 @@ public class Principal extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton3)
+                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGap(0, 161, Short.MAX_VALUE)
@@ -175,16 +176,16 @@ public class Principal extends javax.swing.JFrame {
         if (this.jTextField1.getText().equals("")) {
 
             JOptionPane.showMessageDialog(this, "O campo do site deve ser preenchido.");
-        }
+        } else {
+            try {
 
-        try {
+                this.downloader.getConnection(this.jTextField1.getText());
+                this.jLabel3.setText(this.jTextField1.getText());
 
-            this.downloader.getConnection(this.jTextField1.getText());
-            this.jLabel3.setText(this.jTextField1.getText());
-
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-            JOptionPane.showMessageDialog(this, "Erro ao conectar. Verifique a Url passada e/ou a sua conexão.");
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+                JOptionPane.showMessageDialog(this, "Erro ao conectar. Verifique a Url passada e/ou a sua conexão.");
+            }
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -202,8 +203,6 @@ public class Principal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
 
-    
-    
     private void desabilitarObjetos() {
         this.jButton1.setEnabled(false);
         this.jButton2.setEnabled(false);
@@ -255,5 +254,4 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
-    
 }
