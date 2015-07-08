@@ -100,7 +100,7 @@ public class Downloader implements Runnable {
 
             while (error) {
                 try {
-                    doc = Jsoup.connect(text).get();
+                    doc = Jsoup.connect(text).timeout(10*1000).get();
                     error = false;
                 } catch (Exception e) {
 
@@ -117,7 +117,7 @@ public class Downloader implements Runnable {
                     if (linkAtual.contains(".pdf")) {
 
                         writeFile(text + linkAtual, linkAtual.replace("%20", " "));
-                        break;
+                      //  break;
 
                     } else if (linkAtual.charAt(linkAtual.length() - 1) == '/') {
 
